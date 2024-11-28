@@ -8,10 +8,7 @@ import java.net.InetAddress;
 public class UDPClient {
 
     public static void main(String args[]) throws IOException {
-        // create client
         DatagramSocket client = new DatagramSocket();
-        
-        
         InetAddress addr = InetAddress.getLocalHost();
         byte[] buf = new byte[1024];
         int port = 4160;
@@ -21,7 +18,6 @@ public class UDPClient {
             System.out.print("[SYSTEM] : > Enter message: ");
             String data = new String(din.readLine());
             buf = data.getBytes();
-            // send data
             client.send(new DatagramPacket(buf, buf.length, addr, port));
             if(data.equalsIgnoreCase("terminate")) {
                 break;
